@@ -1,0 +1,229 @@
+        -:    0:Source:/home/sebifp/lab2-4-dinamic-refacut/repos/repos.c
+        -:    0:Graph:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/repos/repos.c.gcno
+        -:    0:Data:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/repos/repos.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <stdbool.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <string.h>
+        -:    4:#include "repos.h"
+        -:    5:
+        -:    6:/*
+        -:    7: * Instantiates a repository and returns a pointer to it.
+        -:    8: * Preconditions: -
+        -:    9: * Post-conditions: a pointer to an instance of ProductsRepo
+        -:   10: */
+function createRepo called 12 returned 100% blocks executed 100%
+       12:   11:ProductsRepo* createRepo() {
+        -:   12:    // create the repo
+       12:   13:    ProductsRepo* productsRepo = malloc(sizeof(ProductsRepo));
+        -:   14:
+        -:   15:    // initialize the numberOfProducts
+       12:   16:    productsRepo->numberOfProducts = 0;
+       12:   17:    return productsRepo;
+       12:   17-block  0
+        -:   18:}
+        -:   19:
+        -:   20:/*
+        -:   21: * Deallocates the memory that is used by a given instance of the ProductsRepo class.
+        -:   22: * Preconditions: repoToDestroy: a pointer to a ProductsRepo struct
+        -:   23: * Post-conditions: -
+        -:   24: */
+function destroyRepo called 10 returned 100% blocks executed 100%
+       10:   25:void destroyRepo(ProductsRepo* repoToDestroy) {
+        -:   26:    // destroy the products in the repo
+       23:   27:    for (int i = 0; i < repoToDestroy->numberOfProducts; i++) {
+       10:   27-block  0
+       23:   27-block  1
+branch  0 taken 13
+branch  1 taken 10 (fallthrough)
+       13:   28:        destroyProduct(repoToDestroy->products[i]);
+       13:   28-block  0
+call    0 returned 13
+        -:   29:    }
+        -:   30:
+        -:   31:    // destroy the pointer to the repo
+       10:   32:    if (repoToDestroy->numberOfProducts != 0) {
+       10:   32-block  0
+branch  0 taken 9 (fallthrough)
+branch  1 taken 1
+        9:   33:        free(repoToDestroy->products);
+        9:   33-block  0
+        -:   34:    }
+       10:   35:    free(repoToDestroy);
+       10:   36:}
+        -:   37:
+        -:   38:/*
+        -:   39: * Attempts to add the received product in the repo
+        -:   40: * Preconditions: repo: a pointer to an instance of the ProductsRepo
+        -:   41: *                newProducts: a pointer to an instance of the Product struct
+        -:   42: * Post-conditions: a bool
+        -:   43: */
+function addProductRepo called 22 returned 100% blocks executed 100%
+       22:   44:bool addProductRepo(ProductsRepo* repo, Product* newProduct) {
+        -:   45:    // check if there is already a product with the id of the received one
+       33:   46:        for (int i = 0; i < repo->numberOfProducts; i++) {
+       22:   46-block  0
+       11:   46-block  1
+       33:   46-block  2
+branch  0 taken 13
+branch  1 taken 20 (fallthrough)
+       13:   47:        if (repo->products[i]->id == newProduct->id) {
+       13:   47-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 11
+        2:   48:            return false;
+        2:   48-block  0
+        -:   49:        }
+        -:   50:    }
+        -:   51:
+        -:   52:    // allocate space for the new product
+        -:   53:
+        -:   54:    // check if there is already a product with the same type, name, producer and model
+       30:   55:    for (int i = 0; i < repo->numberOfProducts; i++) {
+       20:   55-block  0
+       10:   55-block  1
+       30:   55-block  2
+branch  0 taken 11
+branch  1 taken 19 (fallthrough)
+       11:   56:        if (
+       11:   57:                strcmp(repo->products[i]->model, newProduct->model) == 0 &&
+       11:   57-block  0
+branch  0 taken 5 (fallthrough)
+branch  1 taken 6
+        5:   58:                strcmp(repo->products[i]->manufacturer, newProduct->manufacturer) == 0 &&
+        5:   58-block  0
+branch  0 taken 5 (fallthrough)
+branch  1 taken 0
+        5:   59:                repo->products[i]->price == newProduct->price &&
+        5:   59-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 4
+        1:   60:                strcmp(repo->products[i]->type, newProduct->type) == 0
+        1:   60-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        -:   61:                ) {
+        1:   62:            repo->products[i]->quantity += newProduct->quantity;
+        1:   63:            destroyProduct(newProduct);
+        1:   63-block  0
+call    0 returned 1
+        1:   64:            return true;
+        -:   65:        }
+        -:   66:    }
+        -:   67:
+       19:   68:    if (repo->numberOfProducts == 0) {
+       19:   68-block  0
+branch  0 taken 11 (fallthrough)
+branch  1 taken 8
+       11:   69:        repo->products = malloc(sizeof(Product*));
+       11:   69-block  0
+        -:   70:    } else {
+        8:   71:        Product** reallocatedProducts = realloc(repo->products, sizeof(Product*) * (repo->numberOfProducts + 1));
+        8:   72:        repo->products = reallocatedProducts;
+        8:   72-block  0
+        -:   73:    }
+        -:   74:
+        -:   75:    // add the new product and increase the number of products
+       19:   76:    repo->products[repo->numberOfProducts++] = newProduct;
+       19:   77:    return true;
+       19:   77-block  0
+        -:   78:}
+        -:   79:
+        -:   80:/*
+        -:   81: * Attempts to update the product with the received id.
+        -:   82: * Preconditions: repo: a pointer to an instance of the ProductsRepo struct
+        -:   83: *                productToUpdateId: a positive integer
+        -:   84: *                newQuantity: a positive integer
+        -:   85: *                newPrice: a positive float
+        -:   86: * Post-conditions: a boolean
+        -:   87: */
+function updateProductRepo called 4 returned 100% blocks executed 100%
+        4:   88:bool updateProductRepo(ProductsRepo* repo, int productToUpdateId, int newQuantity, float newPrice) {
+        -:   89:    // check if there is a product with the id of productToUpdateId
+        4:   90:    int position = -1;
+        8:   91:    for (int i = 0; i < repo->numberOfProducts; i++) {
+        4:   91-block  0
+        4:   91-block  1
+        8:   91-block  2
+branch  0 taken 4
+branch  1 taken 4 (fallthrough)
+        4:   92:        if (repo->products[i]->id == productToUpdateId) {
+        4:   92-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 2
+        2:   93:            position = i;
+        2:   93-block  0
+        -:   94:        }
+        -:   95:    }
+        -:   96:
+        -:   97:    // if the product is found, update it
+        4:   98:    if (position != -1) {
+        4:   98-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 2
+        2:   99:        repo->products[position]->quantity = newQuantity;
+        2:  100:        repo->products[position]->price = newPrice;
+        2:  101:        return true;
+        2:  101-block  0
+        -:  102:    }
+        -:  103:
+        -:  104:    // return false a product with the id of productToUpdateId does not exist
+        2:  105:    return false;
+        2:  105-block  0
+        -:  106:}
+        -:  107:
+        -:  108:/*
+        -:  109: * Attempts to delete the product with the received id.
+        -:  110: * Preconditions: repo: a pointer to an instance of the ProductsRepo class.
+        -:  111: *                productToDeleteId: a positive integer
+        -:  112: * Post-conditions: a bool
+        -:  113: */
+function deleteProductRepo called 4 returned 100% blocks executed 100%
+        4:  114:bool deleteProductRepo(ProductsRepo* repo, int productToDeleteId) {
+        -:  115:    // check if there is a product with the id of productToDeleteId
+        4:  116:    bool exists = false;
+        4:  117:    int position = -1;
+       10:  118:    for (int i = 0; i < repo->numberOfProducts; i++) {
+        4:  118-block  0
+        6:  118-block  1
+       10:  118-block  2
+branch  0 taken 6
+branch  1 taken 4 (fallthrough)
+        6:  119:        if (repo->products[i]->id == productToDeleteId) {
+        6:  119-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 4
+        2:  120:            exists = true;
+        2:  121:            position = i;
+        2:  121-block  0
+        -:  122:        }
+        -:  123:    }
+        -:  124:
+        -:  125:    // return false if the product does not exist
+        4:  126:    if (!exists) {
+        4:  126-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 2
+        2:  127:        return false;
+        2:  127-block  0
+        -:  128:    }
+        -:  129:
+        -:  130:    // destroy the product that is deleted
+        2:  131:    destroyProduct(repo->products[position]);
+        2:  131-block  0
+call    0 returned 2
+        4:  132:    for (int i = position; i < repo->numberOfProducts - 1; i++) {
+        4:  132-block  0
+branch  0 taken 2
+branch  1 taken 2 (fallthrough)
+        2:  133:        repo->products[i] = repo->products[i + 1];
+        2:  133-block  0
+        -:  134:    }
+        -:  135:
+        -:  136:    // reallocate the memory of products
+        -:  137:    //repo->products = realloc(repo->products, repo->numberOfProducts - 1);
+        2:  138:    repo->numberOfProducts--;
+        -:  139:
+        2:  140:    return true;
+        2:  140-block  0
+        -:  141:}

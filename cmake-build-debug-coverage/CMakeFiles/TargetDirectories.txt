@@ -1,0 +1,3 @@
+/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir
+/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/edit_cache.dir
+/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,232 @@
+        -:    0:Source:/home/sebifp/lab2-4-dinamic-refacut/tests/validatorsTest.c
+        -:    0:Graph:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/tests/validatorsTest.c.gcno
+        -:    0:Data:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/tests/validatorsTest.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <assert.h>
+        -:    2:#include "validatorsTest.h"
+        -:    3:#include "../domain/validators.h"
+        -:    4:
+function testValidateId called 1 returned 100% blocks executed 70%
+        1:    5:void testValidateId() {
+        -:    6:    // Arrange
+        1:    7:    char invalidId1[20] = "2a4";
+        1:    8:    char invalidId2[20] = "";
+        1:    9:    char validId[20] = "23";
+        -:   10:
+        -:   11:    // Assert
+       1*:   12:    assert(validateId(invalidId1) == false);
+        1:   12-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   12-block  1
+call    3 never executed
+       1*:   13:    assert(validateId(invalidId2) == false);
+        1:   13-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   13-block  1
+call    3 never executed
+       1*:   14:    assert(validateId(validId) == true);
+        1:   14-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   14-block  1
+call    3 never executed
+        1:   15:}
+        -:   16:
+function testValidateType called 1 returned 100% blocks executed 71%
+        1:   17:void testValidateType() {
+        -:   18:    // Arrange
+        1:   19:    char invalidType[20] = "Car";
+        1:   20:    char validType[20] = "Computer";
+        -:   21:
+        -:   22:    // Assert
+       1*:   23:    assert(validateType(invalidType) == false);
+        1:   23-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   23-block  1
+call    3 never executed
+       1*:   24:    assert(validateType(validType) == true);
+        1:   24-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   24-block  1
+call    3 never executed
+        1:   25:}
+        -:   26:
+function testValidateManufacturer called 1 returned 100% blocks executed 70%
+        1:   27:void testValidateManufacturer() {
+        -:   28:    // Arrange
+        1:   29:    char invalidManufacturer1[20] = "ASD@#bf12";
+        1:   30:    char invalidManufacturer2[20] = "";
+        1:   31:    char validManufacturer[20] = "ASDFG12AS";
+        -:   32:
+        -:   33:    // Assert
+       1*:   34:    assert(validateManufacturer(invalidManufacturer1) == false);
+        1:   34-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   34-block  1
+call    3 never executed
+       1*:   35:    assert(validateManufacturer(invalidManufacturer2) == false);
+        1:   35-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   35-block  1
+call    3 never executed
+       1*:   36:    assert(validateManufacturer(validManufacturer) == true);
+        1:   36-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   36-block  1
+call    3 never executed
+        1:   37:}
+        -:   38:
+function testValidateModel called 1 returned 100% blocks executed 70%
+        1:   39:void testValidateModel() {
+        -:   40:    // Arrange
+        1:   41:    char invalidModel1[20] = "12@#fG";
+        1:   42:    char invalidModel2[20] = "";
+        1:   43:    char validModel[20] = "12FG4GH";
+        -:   44:
+        -:   45:    // Assert
+       1*:   46:    assert(validateModel(invalidModel1) == false);
+        1:   46-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   46-block  1
+call    3 never executed
+       1*:   47:    assert(validateModel(invalidModel2) == false);
+        1:   47-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   47-block  1
+call    3 never executed
+       1*:   48:    assert(validateModel(validModel) == true);
+        1:   48-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   48-block  1
+call    3 never executed
+        1:   49:}
+        -:   50:
+function testValidatePrice called 1 returned 100% blocks executed 69%
+        1:   51:void testValidatePrice() {
+        -:   52:    // Arrange
+        1:   53:    char invalidPrice1[20] = "-23.4";
+        1:   54:    char invalidPrice2[20] = "2.34.5.6";
+        1:   55:    char invalidPrice3[20] = "";
+        1:   56:    char validPrice[20] = "12.3455";
+        -:   57:
+        -:   58:    // Assert
+       1*:   59:    assert(validatePrice(invalidPrice1) == false);
+        1:   59-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   59-block  1
+call    3 never executed
+       1*:   60:    assert(validatePrice(invalidPrice2) == false);
+        1:   60-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   60-block  1
+call    3 never executed
+       1*:   61:    assert(validatePrice(invalidPrice3) == false);
+        1:   61-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   61-block  1
+call    3 never executed
+       1*:   62:    assert(validatePrice(validPrice) == true);
+        1:   62-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   62-block  1
+call    3 never executed
+        1:   63:}
+        -:   64:
+function testValidateQuantity called 1 returned 100% blocks executed 70%
+        1:   65:void testValidateQuantity() {
+        -:   66:    // Arrange
+        1:   67:    char invalidQuantity1[20] = "2.3";
+        1:   68:    char invalidQuantity2[20] = "";
+        1:   69:    char validQuantity[20] = "2";
+        -:   70:
+        -:   71:    // Assert
+       1*:   72:    assert(validateQuantity(invalidQuantity1) == false);
+        1:   72-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   72-block  1
+call    3 never executed
+       1*:   73:    assert(validateQuantity(invalidQuantity2) == false);
+        1:   73-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   73-block  1
+call    3 never executed
+       1*:   74:    assert(validateQuantity(validQuantity) == true);
+        1:   74-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   74-block  1
+call    3 never executed
+        1:   75:}
+        -:   76:
+function testValidateOption called 1 returned 100% blocks executed 69%
+        1:   77:void testValidateOption() {
+        -:   78:    // Arrange
+        1:   79:    char invalidOption1[20] = "20";
+        1:   80:    char invalidOption2[20] = "";
+        1:   81:    char invalidOption3[20] = "2a";
+        1:   82:    char validOption[20] = "6";
+        -:   83:
+        -:   84:    // Assert
+       1*:   85:    assert(validateOption(invalidOption1) == false);
+        1:   85-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   85-block  1
+call    3 never executed
+       1*:   86:    assert(validateOption(invalidOption2) == false);
+        1:   86-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   86-block  1
+call    3 never executed
+       1*:   87:    assert(validateOption(invalidOption3) == false);
+        1:   87-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   87-block  1
+call    3 never executed
+       1*:   88:    assert(validateOption(validOption) == true);
+        1:   88-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   88-block  1
+call    3 never executed
+        1:   89:}

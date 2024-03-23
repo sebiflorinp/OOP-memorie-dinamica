@@ -1,0 +1,169 @@
+        -:    0:Source:/home/sebifp/lab2-4-dinamic-refacut/controllers/controllers.c
+        -:    0:Graph:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/controllers/controllers.c.gcno
+        -:    0:Data:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/controllers/controllers.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <stdlib.h>
+        -:    2:#include <string.h>
+        -:    3:#include "controllers.h"
+        -:    4:#include "../domain/validators.h"
+        -:    5:#include "../repos/repos.h"
+        -:    6:
+        -:    7:/*
+        -:    8: * Attempts to add a new product in the list of products
+        -:    9: * Preconditions: products: a pointer to an instance of the ProductsRepo class
+        -:   10: *                id: a positive integer
+        -:   11: *                type: a pointer to a char
+        -:   12: *                manufacturer: a pointer to a char
+        -:   13: *                model: a pointer to a char
+        -:   14: *                price: a pointer to a char
+        -:   15: *                quantity: a pointer to a char
+        -:   16: * Post-conditions: a boolean
+        -:   17: */
+function addProductController called 11 returned 100% blocks executed 100%
+       11:   18:bool addProductController(ProductsRepo* repo, int id, char* type, char* manufacturer, char* model,
+        -:   19:                          char* price, char* quantity) {
+        -:   20:    // create the new product
+       11:   21:    Product* newProduct = createProduct(id, type, manufacturer, model, atof(price), atoi(quantity));
+       11:   21-block  0
+call    0 returned 11
+        -:   22:
+        -:   23:    // add the new product
+       11:   24:    bool result = addProductRepo(repo, newProduct);
+call    0 returned 11
+        -:   25:
+        -:   26:    // if the result is false free the memory allocated to the new product
+       11:   27:    if (!result) {
+branch  0 taken 1 (fallthrough)
+branch  1 taken 10
+        1:   28:        destroyProduct(newProduct);
+        1:   28-block  0
+call    0 returned 1
+        -:   29:    }
+       11:   30:    return result;
+       11:   30-block  0
+        -:   31:}
+        -:   32:
+        -:   33:/*
+        -:   34: * Attempts to update the product with the received id
+        -:   35: * Preconditions: repo: a pointer to an instance of the ProductsRepo class
+        -:   36: *                productToUpdateId: a positive integer
+        -:   37: *                newQuantity: a positive integer
+        -:   38: *                newPrice: a positive float
+        -:   39: * Post-conditions: a boolean
+        -:   40: */
+function updateProductController called 2 returned 100% blocks executed 100%
+        2:   41:bool updateProductController(ProductsRepo* repo, int productToUpdateId, int newQuantity, float newPrice) {
+        -:   42:    // attempt to update the product
+        2:   43:    bool result = updateProductRepo(repo, productToUpdateId, newQuantity, newPrice);
+        2:   43-block  0
+call    0 returned 2
+        2:   44:    return result;
+        -:   45:}
+        -:   46:
+        -:   47:/*
+        -:   48: * Attempts to delete the product with the received id
+        -:   49: * Preconditions: repo: a pointer to an instance of the ProductsRepo struct
+        -:   50: *                productToDeleteId: a positive integer
+        -:   51: * Post-conditions: a boolean
+        -:   52: */
+function deleteProductController called 2 returned 100% blocks executed 100%
+        2:   53:bool deleteProductController(ProductsRepo* repo, int productToDeleteId) {
+        -:   54:    // attempt to delete the product
+        2:   55:    bool result = deleteProductRepo(repo, productToDeleteId);
+        2:   55-block  0
+call    0 returned 2
+        2:   56:    return result;
+        -:   57:}
+        -:   58:
+        -:   59:/*
+        -:   60: * Returns the available products sorted depending on the function received as a parameter
+        -:   61: * Preconditions: repo: a pointer to an instance of the ProductsRepo struct
+        -:   62: *                compareProducts: a function that returns a bool and takes two instances of the Product struct as parameters
+        -:   63: * Post-conditions: a pointer to an instance of the ProductsRepo struct
+        -:   64: */
+function getAvailableProducts called 1 returned 100% blocks executed 100%
+        1:   65:ProductsRepo* getAvailableProducts(ProductsRepo* repo, bool (*compareProducts)(Product*, Product*)) {
+        -:   66:    // allocate memory for the result and initialize the number of products
+        1:   67:    ProductsRepo* result = createRepo();
+        1:   67-block  0
+call    0 returned 1
+        -:   68:
+        -:   69:    // go through all products and only copy those that are still available
+        4:   70:    for (int i = 0; i < repo->numberOfProducts; i++) {
+        3:   70-block  0
+        4:   70-block  1
+branch  0 taken 3
+branch  1 taken 1 (fallthrough)
+        3:   71:        if (repo->products[i]->quantity > 0) {
+        3:   71-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 1
+        2:   72:            addProductRepo(result, repo->products[i]);
+        2:   72-block  0
+call    0 returned 2
+        -:   73:        }
+        -:   74:    }
+        -:   75:        // sort depending on the comparison function
+        2:   76:        for (int i = 0; i < result->numberOfProducts - 1; i++) {
+        1:   76-block  0
+        1:   76-block  1
+        2:   76-block  2
+branch  0 taken 1
+branch  1 taken 1 (fallthrough)
+        2:   77:            for (int j = i + 1; j < result->numberOfProducts; j++) {
+        1:   77-block  0
+        1:   77-block  1
+        2:   77-block  2
+branch  0 taken 1
+branch  1 taken 1 (fallthrough)
+        1:   78:                if (!compareProducts(result->products[i], result->products[j])) {
+        1:   78-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:   79:                    Product* aux = result->products[i];
+        1:   80:                    result->products[i] = result->products[j];
+        1:   81:                    result->products[j] = aux;
+        1:   81-block  0
+        -:   82:                }
+        -:   83:            }
+        -:   84:        }
+        -:   85:
+        1:   86:    return result;
+        1:   86-block  0
+        -:   87:}
+        -:   88:
+        -:   89:/*
+        -:   90: * Returns the products that meet a certain property depending on the value and function received as parameters
+        -:   91: * Preconditions: repo: a pointer to an instance of the ProductsRepo struct
+        -:   92: *                checkProductProperty: a function that returns a bool and takes as arguments a pointer to a Product and a pointer to a char
+        -:   93: *                valueToCompareWith: a pointer to a char
+        -:   94: * Post-conditions: a pointer to an instance of the ProductsRepo
+        -:   95: */
+function getProductsFiltered called 1 returned 100% blocks executed 100%
+        1:   96:ProductsRepo* getProductsFiltered(ProductsRepo* repo, bool (*checkProductProperty)(Product*, char*), char* valueToCompareWith) {
+        -:   97:    // allocate memory to the result repo
+        1:   98:    ProductsRepo* result = createRepo();
+        1:   98-block  0
+call    0 returned 1
+        -:   99:
+        -:  100:    // filter by different criteria
+        4:  101:    for (int i = 0; i < repo->numberOfProducts; i++) {
+        3:  101-block  0
+        4:  101-block  1
+branch  0 taken 3
+branch  1 taken 1 (fallthrough)
+        3:  102:        if (checkProductProperty(repo->products[i], valueToCompareWith)) {
+        3:  102-block  0
+call    0 returned 3
+branch  1 taken 2 (fallthrough)
+branch  2 taken 1
+        2:  103:            addProductRepo(result, repo->products[i]);
+        2:  103-block  0
+call    0 returned 2
+        -:  104:        }
+        -:  105:    }
+        -:  106:
+        1:  107:    return result;
+        1:  107-block  0
+        -:  108:}

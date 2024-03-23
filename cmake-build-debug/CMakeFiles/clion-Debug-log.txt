@@ -1,0 +1,4 @@
+/home/sebifp/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/sebifp/.local/share/JetBrains/Toolbox/apps/clion/bin/ninja/linux/x64/ninja -G Ninja -S /home/sebifp/lab2-4-dinamic-refacut -B /home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug

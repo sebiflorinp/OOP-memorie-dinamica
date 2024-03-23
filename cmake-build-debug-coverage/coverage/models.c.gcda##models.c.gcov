@@ -1,0 +1,54 @@
+        -:    0:Source:/home/sebifp/lab2-4-dinamic-refacut/domain/models.c
+        -:    0:Graph:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/domain/models.c.gcno
+        -:    0:Data:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/domain/models.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <string.h>
+        -:    2:#include "models.h"
+        -:    3:#include <stdlib.h>
+        -:    4:
+        -:    5:/*
+        -:    6: * Creates a new product
+        -:    7: * Preconditions: id: a positive integer
+        -:    8: *                type: a pointer to a char
+        -:    9: *                manufacturer: a pointer to a char
+        -:   10: *                model: a pointer to a char
+        -:   11: *                price: a positive float
+        -:   12: *                quantity: a positive integer
+        -:   13: * Post-conditions: a pointer to a new instance of the Product struct
+        -:   14: */
+function createProduct called 27 returned 100% blocks executed 100%
+       27:   15:Product* createProduct(int id, char* type, char* manufacturer, char *model, float price, int quantity) {
+        -:   16:    // allocate the necessary space for a new product
+       27:   17:    Product* newProduct = malloc(sizeof(Product));
+       27:   18:    newProduct->type = malloc(sizeof(char) * (strlen(type) + 1));
+       27:   19:    newProduct->manufacturer = malloc(sizeof(char) * (strlen(manufacturer) + 1));
+       27:   20:    newProduct->model = malloc(sizeof(char) * (strlen(model) + 1));
+        -:   21:
+        -:   22:    // assign the values
+       27:   23:    newProduct->id = id;
+       27:   24:    strcpy(newProduct->type, type);
+       27:   25:    strcpy(newProduct->manufacturer, manufacturer);
+       27:   26:    strcpy(newProduct->model, model);
+       27:   27:    newProduct->price = price;
+       27:   28:    newProduct->quantity = quantity;
+        -:   29:
+        -:   30:    // return the pointer to the newProduct
+       27:   31:    return newProduct;
+       27:   31-block  0
+        -:   32:}
+        -:   33:
+        -:   34:/*
+        -:   35: * Deallocates all the memory used by the received Product.
+        -:   36: * Preconditions: productToDestroy: a pointer to an instance of the Product class
+        -:   37: * Post-conditions: -
+        -:   38: */
+function destroyProduct called 27 returned 100% blocks executed 100%
+       27:   39:void destroyProduct(Product* productToDestroy) {
+        -:   40:    // deallocate the space used by the char fields
+       27:   41:    free(productToDestroy->type);
+       27:   42:    free(productToDestroy->manufacturer);
+       27:   43:    free(productToDestroy->model);
+        -:   44:
+        -:   45:    // deallocate the pointer to the product
+       27:   46:    free(productToDestroy);
+       27:   47:}

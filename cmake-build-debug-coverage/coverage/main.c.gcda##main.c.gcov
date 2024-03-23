@@ -1,0 +1,17 @@
+        -:    0:Source:/home/sebifp/lab2-4-dinamic-refacut/main.c
+        -:    0:Graph:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/main.c.gcno
+        -:    0:Data:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/main.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include "ui/ui.h"
+        -:    3:#include "tests/tests.h"
+        -:    4:
+function main called 1 returned 100% blocks executed 100%
+        1:    5:int main() {
+        1:    6:    runAllTests();
+        1:    6-block  0
+call    0 returned 1
+        1:    7:    app();
+call    0 returned 1
+        1:    8:    return 0;
+        -:    9:}

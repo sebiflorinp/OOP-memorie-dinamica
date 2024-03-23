@@ -1,0 +1,149 @@
+        -:    0:Source:/home/sebifp/lab2-4-dinamic-refacut/utils/utils.c
+        -:    0:Graph:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/utils/utils.c.gcno
+        -:    0:Data:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/utils/utils.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <string.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <stdio.h>
+        -:    4:#include "utils.h"
+        -:    5:#include "../repos/repos.h"
+        -:    6:
+        -:    7:/*
+        -:    8: * Returns a valid id for a new product.
+        -:    9: * Preconditions: repo: a pointer to an instance of the ProductsRepo struct
+        -:   10: * Post-conditions: an integer
+        -:   11: */
+function getIdForNewProduct called 1 returned 100% blocks executed 100%
+        1:   12:int getIdForNewProduct(ProductsRepo* repo) {
+        1:   13:    int maxId = 0;
+        -:   14:    // find the max id in the list of products
+        2:   15:    for (int i = 0; i < repo->numberOfProducts; i++) {
+        1:   15-block  0
+        1:   15-block  1
+        2:   15-block  2
+branch  0 taken 1
+branch  1 taken 1 (fallthrough)
+        1:   16:        if (repo->products[i]->id > maxId) {
+        1:   16-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:   17:            maxId = repo->products[i]->id;
+        1:   17-block  0
+        -:   18:        }
+        -:   19:    }
+        -:   20:
+        -:   21:    // return the id increased by one in order to be unique
+        1:   22:    return ++maxId;
+        1:   22-block  0
+        -:   23:}
+        -:   24:
+        -:   25:/*
+        -:   26: * A function that compares two products in ascendant order by price and quantity.
+        -:   27: * Preconditions: product1: a pointer to an instance of the Product struct
+        -:   28: *                product2: a pointer to an instance of the Product struct
+        -:   29: * Post-conditions: a bool
+        -:   30: */
+function compareProductsInAscendantOrder called 4 returned 100% blocks executed 100%
+        4:   31:bool compareProductsInAscendantOrder(Product* product1, Product* product2) {
+        -:   32:    // check the prices
+        4:   33:    if (product1->price < product2->price){
+        4:   33-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 3
+        1:   34:        return true;
+        1:   34-block  0
+        -:   35:    }
+        3:   36:    else if (product1->price == product2->price) {
+        3:   36-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 1
+        -:   37:        // check the quantities if the prices are equal
+        2:   38:        if (product1->quantity < product2->quantity) {
+        2:   38-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:   39:            return true;
+        1:   39-block  0
+        -:   40:        }
+        -:   41:    }
+        -:   42:
+        2:   43:    return false;
+        2:   43-block  0
+        -:   44:}
+        -:   45:
+        -:   46:/*
+        -:   47: * A function that compares two products in descendant order by price and quantity.
+        -:   48: * Preconditions: product1: a pointer to an instance of the Product struct
+        -:   49: *                product2: a pointer to an instance of the Product struct
+        -:   50: * Post-conditions: a bool
+        -:   51: */
+function compareProductsInDescendantOrder called 3 returned 100% blocks executed 100%
+        3:   52:bool compareProductsInDescendantOrder(Product* product1, Product* product2) {
+        -:   53:    // check the prices
+        3:   54:    if (product1->price > product2->price){
+        3:   54-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 2
+        1:   55:        return true;
+        1:   55-block  0
+        -:   56:    }
+        2:   57:    else if (product1->price == product2->price) {
+        2:   57-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        -:   58:        // check the quantities if the prices are equal
+        1:   59:        if (product1->quantity > product2->quantity) {
+        1:   59-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:   60:            return true;
+        1:   60-block  0
+        -:   61:        }
+        -:   62:    }
+        -:   63:
+        1:   64:    return false;
+        1:   64-block  0
+        -:   65:}
+        -:   66:
+        -:   67:/*
+        -:   68: * A function that checks if a product has a certain manufacturer.
+        -:   69: * Preconditions: product: an instance of the Product struct
+        -:   70: *                manufacturer: a pointer to a char
+        -:   71: * Post-conditions: a bool
+        -:   72: */
+function compareManufacturers called 2 returned 100% blocks executed 100%
+        2:   73:bool compareManufacturers(Product* product, char* manufacturer) {
+        2:   74:    if (strcmp(product->manufacturer, manufacturer) == 0) {
+        2:   74-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:   75:        return true;
+        1:   75-block  0
+        -:   76:    }
+        1:   77:    return false;
+        1:   77-block  0
+        -:   78:}
+        -:   79:
+        -:   80:/*
+        -:   81: * A function that checks if a product has a certain price.
+        -:   82: * Preconditions: product: an instance of the Product struct
+        -:   83: *                price: a pointer to a char
+        -:   84: * Post-conditions: a bool
+        -:   85: */
+function comparePrice called 5 returned 100% blocks executed 100%
+        5:   86:bool comparePrice(Product* product, char* price) {
+        5:   87:    return product->price == atof(price);
+        5:   87-block  0
+        -:   88:}
+        -:   89:
+        -:   90:/*
+        -:   91: * A function that checks if a product has a certain quantity.
+        -:   92: * Preconditions: product: an instance of the Product struct
+        -:   93: *                quantity: a pointer to a char
+        -:   94: * Post-conditions: a bool
+        -:   95: */
+function compareQuantity called 2 returned 100% blocks executed 100%
+        2:   96:bool compareQuantity(Product* product, char* quantity) {
+        2:   97:    return product->quantity == atoi(quantity);
+        2:   97-block  0
+        -:   98:}

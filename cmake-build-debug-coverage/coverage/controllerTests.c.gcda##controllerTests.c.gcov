@@ -1,0 +1,214 @@
+        -:    0:Source:/home/sebifp/lab2-4-dinamic-refacut/tests/controllerTests.c
+        -:    0:Graph:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/tests/controllerTests.c.gcno
+        -:    0:Data:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/tests/controllerTests.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <assert.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include "controllerTests.h"
+        -:    4:#include "../controllers/controllers.h"
+        -:    5:#include "../utils/utils.h"
+        -:    6:
+function testAddProductController called 1 returned 100% blocks executed 73%
+        1:    7:void testAddProductController() {
+        -:    8:    // Arrange
+        1:    9:    ProductsRepo* repo = createRepo();
+        1:    9-block  0
+call    0 returned 1
+        -:   10:
+        -:   11:    //Act
+        1:   12:    bool actual1 = addProductController(repo, 1, "Computer", "AAAA", "Aaaa", "12",
+call    0 returned 1
+        -:   13:                                        "12");
+        1:   14:    bool actual2 = addProductController(repo, 1, "Computer", "AAAA", "Aaaa", "12",
+call    0 returned 1
+        -:   15:                                        "12");
+        -:   16:
+        -:   17:    // Assert
+       1*:   18:    assert(actual1 == true);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   18-block  0
+call    2 never executed
+       1*:   19:    assert(repo->products[0]->id == 1);
+        1:   19-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   19-block  1
+call    2 never executed
+       1*:   20:    assert(actual2 == false);
+        1:   20-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   20-block  1
+call    2 never executed
+        -:   21:
+        -:   22:    // Cleanup
+        1:   23:    destroyRepo(repo);
+        1:   23-block  0
+call    0 returned 1
+        1:   24:}
+        -:   25:
+function testUpdateProductController called 1 returned 100% blocks executed 75%
+        1:   26:void testUpdateProductController() {
+        -:   27:    // Arrange
+        1:   28:    ProductsRepo* repo = createRepo();
+        1:   28-block  0
+call    0 returned 1
+        1:   29:    addProductController(repo, 1, "Computer", "AAAA", "Aaaa", "12","12");
+call    0 returned 1
+        -:   30:
+        -:   31:    // Act
+        1:   32:    bool actual1 = updateProductController(repo, 1, 2, 2.3f);
+call    0 returned 1
+        1:   33:    bool actual2 = updateProductController(repo, 2, 2, 2.3f);
+call    0 returned 1
+        -:   34:
+        -:   35:    // Assert
+       1*:   36:    assert(actual1 == true);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   36-block  0
+call    2 never executed
+       1*:   37:    assert(repo->products[0]->quantity == 2);
+        1:   37-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   37-block  1
+call    2 never executed
+       1*:   38:    assert(actual2 == false);
+        1:   38-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   38-block  1
+call    2 never executed
+        -:   39:
+        -:   40:    // Cleanup
+        1:   41:    destroyRepo(repo);
+        1:   41-block  0
+call    0 returned 1
+        -:   42:
+        1:   43:}
+        -:   44:
+function testDeleteProductController called 1 returned 100% blocks executed 73%
+        1:   45:void testDeleteProductController() {
+        -:   46:    // Arrange
+        1:   47:    ProductsRepo* repo = createRepo();
+        1:   47-block  0
+call    0 returned 1
+        1:   48:    addProductController(repo, 1, "Computer", "AAAA", "Aaaa", "12","12");
+call    0 returned 1
+        1:   49:    addProductController(repo, 2, "Computer", "AAAA", "Aaa", "12","12");
+call    0 returned 1
+        -:   50:
+        -:   51:    // Act
+        1:   52:    bool actual1 = deleteProductController(repo, 1);
+call    0 returned 1
+        1:   53:    bool actual2 = deleteProductController(repo, 3);
+call    0 returned 1
+        -:   54:
+        -:   55:    // Assert
+       1*:   56:    assert(actual1 == true);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   56-block  0
+call    2 never executed
+       1*:   57:    assert(repo->products[0]->id == 2);
+        1:   57-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   57-block  1
+call    2 never executed
+       1*:   58:    assert(repo->numberOfProducts == 1);
+        1:   58-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   58-block  1
+call    2 never executed
+       1*:   59:    assert(actual2 == false);
+        1:   59-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   59-block  1
+call    2 never executed
+        -:   60:
+        -:   61:    // Cleanup
+        1:   62:    destroyRepo(repo);
+        1:   62-block  0
+call    0 returned 1
+        1:   63:}
+        -:   64:
+function testGetAvailableProducts called 1 returned 100% blocks executed 82%
+        1:   65:void testGetAvailableProducts() {
+        -:   66:    // Arrange
+        1:   67:    ProductsRepo* repo = createRepo();
+        1:   67-block  0
+call    0 returned 1
+        1:   68:    addProductController(repo, 1, "Computer", "AAAA", "Aaaa", "12","12");
+call    0 returned 1
+        1:   69:    addProductController(repo, 2, "Computer", "AAAA", "Aaaa", "11","12");
+call    0 returned 1
+        1:   70:    addProductController(repo, 3, "Computer", "AAAA", "Aaaa", "13","0");
+call    0 returned 1
+        -:   71:
+        -:   72:    // Act
+        1:   73:    ProductsRepo* actual1 = getAvailableProducts(repo, compareProductsInAscendantOrder);
+call    0 returned 1
+        -:   74:
+        -:   75:    // Assert
+       1*:   76:    assert(actual1->products[0]->id == 2);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   76-block  0
+call    2 never executed
+       1*:   77:    assert(actual1->products[1]->id == 1);
+        1:   77-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   77-block  1
+call    2 never executed
+        -:   78:
+        -:   79:    // Cleanup
+        1:   80:    destroyRepo(repo);
+        1:   80-block  0
+call    0 returned 1
+        1:   81:    free(actual1->products);
+        1:   82:    free(actual1);
+        1:   83:}
+        -:   84:
+function testGetProductsFiltered called 1 returned 100% blocks executed 82%
+        1:   85:void testGetProductsFiltered() {
+        -:   86:    // Arrange
+        1:   87:    ProductsRepo* repo = createRepo();
+        1:   87-block  0
+call    0 returned 1
+        1:   88:    addProductController(repo, 1, "Computer", "AAAA", "Aaaa", "12","12");
+call    0 returned 1
+        1:   89:    addProductController(repo, 2, "Computer", "AAAA", "aa", "11","12");
+call    0 returned 1
+        1:   90:    addProductController(repo, 3, "Computer", "AAAA", "Aaa", "12","0");
+call    0 returned 1
+        -:   91:
+        -:   92:    // Act
+        1:   93:    ProductsRepo* actual1 = getProductsFiltered(repo, comparePrice, "12");
+call    0 returned 1
+        -:   94:
+        -:   95:    // Assert
+       1*:   96:    assert(actual1->products[0]->id == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   96-block  0
+call    2 never executed
+       1*:   97:    assert(actual1->products[1]->id == 3);
+        1:   97-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   97-block  1
+call    2 never executed
+        -:   98:
+        -:   99:    // Cleanup
+        1:  100:    destroyRepo(repo);
+        1:  100-block  0
+call    0 returned 1
+        1:  101:    free(actual1->products);
+        1:  102:    free(actual1);
+        1:  103:}

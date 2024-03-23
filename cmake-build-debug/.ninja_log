@@ -1,0 +1,15 @@
+# ninja log v5
+2	37	1711090814018170962	CMakeFiles/lab2_4_dinamic_refacut.dir/controllers/controllers.c.o	94502761a206c6fb
+0	27	1711090814006171098	CMakeFiles/lab2_4_dinamic_refacut.dir/main.c.o	3bb05de1625fe62f
+2	37	1711090814018170962	CMakeFiles/lab2_4_dinamic_refacut.dir/tests/repoTests.c.o	2614c5bdc562601b
+2	47	1711090814026170872	CMakeFiles/lab2_4_dinamic_refacut.dir/tests/controllerTests.c.o	1cff9b3e12a5733f
+1	42	1711090814022170917	CMakeFiles/lab2_4_dinamic_refacut.dir/tests/validatorsTest.c.o	a30b2456df3050b5
+2	38	1711090814018170962	CMakeFiles/lab2_4_dinamic_refacut.dir/repos/repos.c.o	3c6b87d27f018eaf
+1	40	1711090814022170917	CMakeFiles/lab2_4_dinamic_refacut.dir/domain/models.c.o	c4ca6accff2193b5
+0	17	1711198613737697176	build.ninja	43f2bc7a090201ac
+0	37	1711090814018170962	CMakeFiles/lab2_4_dinamic_refacut.dir/utils/utils.c.o	e69cef804f00c3b2
+1	27	1711090814006171098	CMakeFiles/lab2_4_dinamic_refacut.dir/tests/tests.c.o	acf3acd432b3a671
+2	40	1711090814018170962	CMakeFiles/lab2_4_dinamic_refacut.dir/tests/utilsTests.c.o	1fa3a162a182cb73
+1	42	1711090814022170917	CMakeFiles/lab2_4_dinamic_refacut.dir/domain/validators.c.o	3bc3e366b3a8bf07
+3	54	1711090814034170782	CMakeFiles/lab2_4_dinamic_refacut.dir/ui/ui.c.o	6e882741b1452b4a
+54	79	1711090814058170511	lab2_4_dinamic_refacut	af5b25b2f5729b68

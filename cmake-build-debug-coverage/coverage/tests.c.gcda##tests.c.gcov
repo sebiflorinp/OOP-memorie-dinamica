@@ -1,0 +1,63 @@
+        -:    0:Source:/home/sebifp/lab2-4-dinamic-refacut/tests/tests.c
+        -:    0:Graph:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/tests/tests.c.gcno
+        -:    0:Data:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/tests/tests.c.gcda
+        -:    0:Runs:1
+        -:    1:#include "tests.h"
+        -:    2:#include "repoTests.h"
+        -:    3:#include "validatorsTest.h"
+        -:    4:#include "controllerTests.h"
+        -:    5:#include "utilsTests.h"
+        -:    6:
+function runAllTests called 1 returned 100% blocks executed 100%
+        1:    7:void runAllTests() {
+        -:    8:    // repo tests
+        1:    9:    testAddProductRepo();
+        1:    9-block  0
+call    0 returned 1
+        1:   10:    testUpdateProductRepo();
+call    0 returned 1
+        1:   11:    testDeleteProductRepo();
+call    0 returned 1
+        -:   12:
+        -:   13:    // validators tests
+        1:   14:    testValidateId();
+call    0 returned 1
+        1:   15:    testValidateManufacturer();
+call    0 returned 1
+        1:   16:    testValidateModel();
+call    0 returned 1
+        1:   17:    testValidateOption();
+call    0 returned 1
+        1:   18:    testValidatePrice();
+call    0 returned 1
+        1:   19:    testValidateQuantity();
+call    0 returned 1
+        1:   20:    testValidateType();
+call    0 returned 1
+        -:   21:
+        -:   22:    // controller tests
+        1:   23:    testAddProductController();
+call    0 returned 1
+        1:   24:    testUpdateProductController();
+call    0 returned 1
+        1:   25:    testDeleteProductController();
+call    0 returned 1
+        1:   26:    testGetAvailableProducts();
+call    0 returned 1
+        1:   27:    testGetProductsFiltered();
+call    0 returned 1
+        -:   28:
+        -:   29:    // utils tests
+        1:   30:    testGetIdForNewProduct();
+call    0 returned 1
+        1:   31:    testCompareProductsInAscendantOrder();
+call    0 returned 1
+        1:   32:    testCompareProductsInDescendantOrder();
+call    0 returned 1
+        1:   33:    testCompareManufacturers();
+call    0 returned 1
+        1:   34:    testComparePrice();
+call    0 returned 1
+        1:   35:    testCompareQuantity();
+call    0 returned 1
+        1:   36:}

@@ -1,0 +1,235 @@
+        -:    0:Source:/home/sebifp/lab2-4-dinamic-refacut/tests/utilsTests.c
+        -:    0:Graph:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/tests/utilsTests.c.gcno
+        -:    0:Data:/home/sebifp/lab2-4-dinamic-refacut/cmake-build-debug-coverage/CMakeFiles/lab2_4_dinamic_refacut.dir/tests/utilsTests.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <assert.h>
+        -:    2:#include "utilsTests.h"
+        -:    3:#include "../domain/models.h"
+        -:    4:#include "../utils/utils.h"
+        -:    5://#include "../controllers/controllers.h"
+        -:    6:
+function testGetIdForNewProduct called 1 returned 100% blocks executed 88%
+        1:    7:void testGetIdForNewProduct() {
+        -:    8:    // Arrange
+        1:    9:    ProductsRepo* repo = createRepo();
+        1:    9-block  0
+call    0 returned 1
+        1:   10:    Product* newProduct = createProduct(1, "Computer", "AAAA", "Aaaa", 12, 12);
+call    0 returned 1
+        1:   11:    addProductRepo(repo, newProduct);
+call    0 returned 1
+        -:   12:
+        -:   13:    // Act
+        1:   14:    int actual1 = getIdForNewProduct(repo);
+call    0 returned 1
+        -:   15:
+        -:   16:    // Assert
+       1*:   17:    assert(actual1 == 2);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   17-block  0
+call    2 never executed
+        -:   18:
+        -:   19:    // Cleanup
+        1:   20:    destroyRepo(repo);
+        1:   20-block  0
+call    0 returned 1
+        1:   21:}
+        -:   22:
+function testCompareProductsInAscendantOrder called 1 returned 100% blocks executed 83%
+        1:   23:void testCompareProductsInAscendantOrder() {
+        -:   24:    // Arrange
+        1:   25:    Product* product1 = createProduct(1, "Computer", "AAAA", "Aaaa", 12, 12);
+        1:   25-block  0
+call    0 returned 1
+        1:   26:    Product* product2 = createProduct(2, "Computer", "AAAA", "Aaaa", 13, 12);
+call    0 returned 1
+        1:   27:    Product* product3 = createProduct(3, "Computer", "AAAA", "Aaaa", 12, 11);
+call    0 returned 1
+        1:   28:    Product* product4 = createProduct(4, "Computer", "AAAA", "Aaaa", 12, 13);
+call    0 returned 1
+        -:   29:
+        -:   30:
+        -:   31:    // Act
+        1:   32:    bool actual1 = compareProductsInAscendantOrder(product1, product2);
+call    0 returned 1
+        1:   33:    bool actual2 = compareProductsInAscendantOrder(product1, product3);
+call    0 returned 1
+        1:   34:    bool actual3 = compareProductsInAscendantOrder(product1, product4);
+call    0 returned 1
+        -:   35:
+        -:   36:    // Assert
+       1*:   37:    assert(actual1 == true);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   37-block  0
+call    2 never executed
+       1*:   38:    assert(actual2 == false);
+        1:   38-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   38-block  1
+call    2 never executed
+       1*:   39:    assert(actual3 == true);
+        1:   39-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   39-block  1
+call    2 never executed
+        -:   40:
+        -:   41:    // Cleanup
+        1:   42:    destroyProduct(product1);
+        1:   42-block  0
+call    0 returned 1
+        1:   43:    destroyProduct(product2);
+call    0 returned 1
+        1:   44:    destroyProduct(product3);
+call    0 returned 1
+        1:   45:    destroyProduct(product4);
+call    0 returned 1
+        1:   46:}
+        -:   47:
+function testCompareProductsInDescendantOrder called 1 returned 100% blocks executed 81%
+        1:   48:void testCompareProductsInDescendantOrder() {
+        -:   49:    // Arrange
+        1:   50:    Product* product1 = createProduct(1, "Computer", "AAAA", "Aaaa", 12, 12);
+        1:   50-block  0
+call    0 returned 1
+        1:   51:    Product* product2 = createProduct(2, "Computer", "AAAA", "Aaaa", 13, 12);
+call    0 returned 1
+        1:   52:    Product* product3 = createProduct(3, "Computer", "AAAA", "Aaaa", 12, 11);
+call    0 returned 1
+        -:   53:
+        -:   54:
+        -:   55:    // Act
+        1:   56:    bool actual1 = compareProductsInDescendantOrder(product1, product2);
+call    0 returned 1
+        1:   57:    bool actual2 = compareProductsInDescendantOrder(product1, product3);
+call    0 returned 1
+        1:   58:    bool actual3 = compareProductsInDescendantOrder(product2, product1);
+call    0 returned 1
+        -:   59:
+        -:   60:    // Assert
+       1*:   61:    assert(actual1 == false);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   61-block  0
+call    2 never executed
+       1*:   62:    assert(actual2 == true);
+        1:   62-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   62-block  1
+call    2 never executed
+       1*:   63:    assert(actual3 == true);
+        1:   63-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   63-block  1
+call    2 never executed
+        -:   64:
+        -:   65:    // Cleanup
+        1:   66:    destroyProduct(product1);
+        1:   66-block  0
+call    0 returned 1
+        1:   67:    destroyProduct(product2);
+call    0 returned 1
+        1:   68:    destroyProduct(product3);
+call    0 returned 1
+        1:   69:}
+        -:   70:
+function testCompareManufacturers called 1 returned 100% blocks executed 78%
+        1:   71:void testCompareManufacturers() {
+        -:   72:    // Arrange
+        1:   73:    Product* product1 = createProduct(1, "Computer", "ABC", "Aaaa", 12, 12);
+        1:   73-block  0
+call    0 returned 1
+        -:   74:
+        -:   75:    // Act
+        1:   76:    bool actual1 = compareManufacturers(product1, "ABC");
+call    0 returned 1
+        1:   77:    bool actual2 = compareManufacturers(product1, "ABCD");
+call    0 returned 1
+        -:   78:
+        -:   79:    // Assert
+       1*:   80:    assert(actual1 == true);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   80-block  0
+call    2 never executed
+       1*:   81:    assert(actual2 == false);
+        1:   81-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   81-block  1
+call    2 never executed
+        -:   82:
+        -:   83:    // Cleanup
+        1:   84:    destroyProduct(product1);
+        1:   84-block  0
+call    0 returned 1
+        1:   85:}
+        -:   86:
+function testComparePrice called 1 returned 100% blocks executed 78%
+        1:   87:void testComparePrice() {
+        -:   88:    // Arrange
+        1:   89:    Product* product1 = createProduct(1, "Computer", "ABC", "Aaaa", 12, 12);
+        1:   89-block  0
+call    0 returned 1
+        -:   90:
+        -:   91:    // Act
+        1:   92:    bool actual1 = comparePrice(product1, "12");
+call    0 returned 1
+        1:   93:    bool actual2 = comparePrice(product1, "13");
+call    0 returned 1
+        -:   94:
+        -:   95:    // Assert
+       1*:   96:    assert(actual1 == true);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   96-block  0
+call    2 never executed
+       1*:   97:    assert(actual2 == false);
+        1:   97-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   97-block  1
+call    2 never executed
+        -:   98:
+        -:   99:    // Cleanup
+        1:  100:    destroyProduct(product1);
+        1:  100-block  0
+call    0 returned 1
+        1:  101:}
+        -:  102:
+function testCompareQuantity called 1 returned 100% blocks executed 78%
+        1:  103:void testCompareQuantity() {
+        -:  104:    // Arrange
+        1:  105:    Product* product1 = createProduct(1, "Computer", "ABC", "Aaaa", 12, 12);
+        1:  105-block  0
+call    0 returned 1
+        -:  106:
+        -:  107:    // Act
+        1:  108:    bool actual1 = compareQuantity(product1, "12");
+call    0 returned 1
+        1:  109:    bool actual2 = compareQuantity(product1, "13");
+call    0 returned 1
+        -:  110:
+        -:  111:    // Assert
+       1*:  112:    assert(actual1 == true);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  112-block  0
+call    2 never executed
+       1*:  113:    assert(actual2 == false);
+        1:  113-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  113-block  1
+call    2 never executed
+        -:  114:
+        -:  115:    // Cleanup
+        1:  116:    destroyProduct(product1);
+        1:  116-block  0
+call    0 returned 1
+        1:  117:}
